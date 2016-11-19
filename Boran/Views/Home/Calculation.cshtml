@@ -1,0 +1,55 @@
+﻿@model List<List<Boran.ViewModels.Sum>>
+
+@{
+    ViewBag.Title = "Calculation";
+}
+
+<h2>Calculation</h2>
+
+<p>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+</p>
+@if (Model != null)
+{
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().FirstOrDefault().Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().FirstOrDefault().ProductCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().FirstOrDefault().Count)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().FirstOrDefault().TotalPriceToCategory)
+        </th>
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    foreach (var sum in item)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => sum.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => sum.ProductCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => sum.Count)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => sum.TotalPriceToCategory)
+        </td>
+      
+    </tr>
+    }
+}
+</table>
+}
